@@ -1,0 +1,21 @@
+/* Home.css */
+.custom-scrollbar {
+    scrollbar-width: thin;
+    scrollbar-color: #6b7280 #f3f4f6;
+    /* Color del thumb y track respectivamente */
+}
+
+.custom-scrollbar::-webkit-scrollbar {
+    width: 12px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-track {
+    background: #f3f4f6;
+    border-radius: 10px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb {
+    background-color: #6b7280;
+    border-radius: 10px;
+    border: 3px solid #f3f4f6;
+}
