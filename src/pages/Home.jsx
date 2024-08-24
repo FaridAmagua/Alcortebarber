@@ -1,8 +1,23 @@
+/* eslint-disable no-unused-vars */
 import React from "react";
 import Service from "../components/Service";
 import Navbar from "../components/Navbar";
 import "./Home.css";
 import Map from "../components/Map";
+//IMAGENES
+//iconos
+import Imgprofile from "@/assets/icons/account.svg";
+import Imgmap from "@/assets/icons/map.svg";
+import Imgprincipal from "@/assets/img-3.jpeg";
+import Imginstagram from "@/assets/icons/insta.svg";
+import Imgwhatsapp from "@/assets/icons/what.svg";
+import Imgcall from "@/assets/icons/call.svg";
+//cortes
+import Imgcorte1 from "@/assets/cortes/1.jpeg";
+import Imgcorte2 from "@/assets/cortes/2.jpeg";
+import Imgcorte3 from "@/assets/cortes/3.jpeg";
+import Imgcorte4 from "@/assets/cortes/4.jpeg";
+import Imgcorte5 from "@/assets/cortes/5.jpeg";
 
 // Lista de servicios
 const horarios = [
@@ -33,25 +48,29 @@ const Home = () => {
       <Navbar />
 
       {/* Sección principal */}
-      <div className="container mx-auto px-4 grid grid-cols-2 h-screen">
-        <div className="flex items-center justify-end">
-          <img
-            src="src/assets/img-3.jpeg"
-            alt="Barber Shop"
-            className="object-cover w-3/4 h-3/4 rounded-lg"
-          />
-        </div>
-        <div className="flex items-center justify-center ms-5">
-          <div className="p-4">
-            <h1 className="text-7xl font-bold mb-4">ALCORTEBARBER</h1>
-            <p className="text-lg font-sans mb-4 text-black">
-              Descubre nuestra amplia gama de servicios de peluquería,
-              incluyendo cortes de pelo, arreglos de barba y asesoramiento
-              personalizado. Visítanos y déjanos cuidar de tu estilo.
-            </p>
-            <button className="bg-black text-white py-2 px-4 rounded btn-effect font-semibold border-2 border-black">
-              RESERVA TU CITA
-            </button>
+      <div className="container mx-auto px-4 h-screen">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 h-full">
+          <div className="flex items-center justify-center">
+            <img
+              src={Imgprincipal}
+              alt="Alcorte Barberia"
+              className="object-cover w-3/4 h-3/4 md:w-5/6 lg:w-full md:h-5/6 lg:h-/6 rounded-lg mt-[70px] sm:mt-0 md:mt-0 lg:mt-0"
+            />
+          </div>
+          <div className="flex items-center justify-center sm:items-start md:items-center lg:items-center">
+            <div className="text-center md:text-left">
+              <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-4">
+                ALCORTEBARBER
+              </h1>
+              <p className="text-base md:text-lg lg:text-xl font-sans mb-4 text-black">
+                Descubre nuestra amplia gama de servicios de peluquería,
+                incluyendo cortes de pelo, arreglos de barba y asesoramiento
+                personalizado. Visítanos y déjanos cuidar de tu estilo.
+              </p>
+              <button className="bg-black text-white py-2 px-4 rounded btn-effect font-semibold border-2 border-black">
+                RESERVA TU CITA
+              </button>
+            </div>
           </div>
         </div>
       </div>
@@ -69,7 +88,9 @@ const Home = () => {
                   Avenida Lope de Figueroa, 1, 28804, Alcalá de Henares
                 </p>
                 <span>
-                  <img src="src/assets/map.svg" className="mr-2" alt="mapa" />
+                  <a href="https://www.google.com/maps/dir//alcortebarber/data=!4m6!4m5!1m1!4e2!1m2!1m1!1s0xd42490f6f900849:0x64e26d5bf5fe2002?sa=X&ved=1t:3061&ictx=111">
+                    <img src={Imgmap} className="mr-2" alt="mapa" />
+                  </a>
                 </span>
               </div>
               <h2 className="text-3xl font-semibold mb-4">
@@ -79,6 +100,8 @@ const Home = () => {
                 <Service />
               </div>
             </div>
+
+            
             <div className="col-span-3 flex flex-col p-4 bg-white rounded-lg shadow-lg">
               <h1 className="text-4xl font-bold pb-5 text-start">
                 DESCUBRE NUESTROS CORTES
@@ -91,29 +114,29 @@ const Home = () => {
               <div className="grid grid-cols-2 gap-4">
                 <div className="flex justify-center items-center col-span-1">
                   <img
-                    src="src/assets/cortes/5.jpeg"
+                    src={Imgcorte1}
                     alt=""
                     className="h-auto w-full object-cover rounded"
                   />
                 </div>
                 <div className="grid grid-cols-2 gap-2">
                   <img
-                    src="src/assets/cortes/1.jpeg"
+                    src={Imgcorte2}
                     alt=""
                     className="h-auto w-full object-cover rounded"
                   />
                   <img
-                    src="src/assets/cortes/2.jpeg"
+                    src={Imgcorte3}
                     alt=""
                     className="h-auto w-full object-cover rounded"
                   />
                   <img
-                    src="src/assets/cortes/3.jpeg"
+                    src={Imgcorte4}
                     alt=""
                     className="h-auto w-full object-cover rounded"
                   />
                   <img
-                    src="src/assets/cortes/4.jpeg"
+                    src={Imgcorte5}
                     alt=""
                     className="h-auto w-full object-cover rounded"
                   />
@@ -126,19 +149,11 @@ const Home = () => {
               <h2 className="text-3xl font-semibold mb-4">Empleados</h2>
               <div className="block font-sans">
                 <div className="flex items-center justify-start mb-2">
-                  <img
-                    src="src/assets/account.svg"
-                    alt="Icono de cuenta"
-                    className="mr-2"
-                  />
+                  <img src={Imgprofile} alt="profile image" className="mr-2" />
                   <p className="text-lg">Armando Uceda</p>
                 </div>
                 <div className="flex items-center justify-start mb-2">
-                  <img
-                    src="src/assets/account.svg"
-                    alt="Icono de cuenta"
-                    className="mr-2"
-                  />
+                  <img src={Imgprofile} alt="profile image" className="mr-2" />
                   <p className="text-lg ">Cristian</p>
                 </div>
               </div>
@@ -166,17 +181,17 @@ const Home = () => {
                   <div key={index} className="mb-2 flex items-center">
                     <button className="ms-2 py-1 px-3 bg-[#08A0E9] shadow-lg text-black font-semibold rounded-md shadow-md hover:bg-violet-700 focus:outline-none focus:ring focus:ring-violet-400 focus:ring-opacity-75 h-[60px] w-[60px]">
                       <span className="flex items-center justify-center">
-                        <img src="src/assets/icons/call1.svg" alt="" />
+                        <img src={Imgcall} alt="Alcortebarber" />
                       </span>
                     </button>
                     <button className="ms-2 py-1 px-3 bg-[#7AD06D] shadow-lg text-black font-semibold rounded-md shadow-md hover:bg-violet-700 focus:outline-none focus:ring focus:ring-violet-400 focus:ring-opacity-75 h-[60px] w-[60px]">
                       <span className="flex items-center justify-center">
-                        <img src="src/assets/icons/what.svg" alt="" />
+                        <img src={Imgwhatsapp} alt="WhatsApp Alcortebarber" />
                       </span>
                     </button>
                     <button className="ms-2 py-1 px-3 bg-[#FBC031] shadow-lg text-black font-semibold rounded-md shadow-md hover:bg-violet-700 focus:outline-none focus:ring focus:ring-violet-400 focus:ring-opacity-75 h-[60px] w-[60px]">
                       <span className="flex items-center justify-center">
-                        <img src="src/assets/icons/insta.svg" alt="" />
+                        <img src={Imginstagram} alt="Instagram Alcortebarber" />
                       </span>
                     </button>
                   </div>
