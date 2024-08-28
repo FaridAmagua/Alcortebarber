@@ -9,7 +9,7 @@ export const Navbar = () => {
     { name: "SERVICIOS", link: "/servicios" },
   ];
 
-  const [toggleNavbar, setToggleNavbar] = useState(true);
+  const [toggleNavbar, setToggleNavbar] = useState(false);
   const collapseRef = useRef(null);
 
   const hiderBars = () => {
