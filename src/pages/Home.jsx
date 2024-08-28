@@ -9,7 +9,7 @@ import Map from "../components/Map";
 import Imgprofile from "@/assets/icons/account.svg";
 import Imgmap from "@/assets/icons/map.svg";
 import Imgprincipal from "@/assets/img-3.jpeg";
-import Imginstagram from "@/assets/icons/insta.svg";
+  import Imginstagram from "@/assets/icons/insta.svg";
 import Imgwhatsapp from "@/assets/icons/what.svg";
 import Imgcall from "@/assets/icons/call.svg";
 //cortes
@@ -76,9 +76,9 @@ const Home = () => {
       </div>
 
       {/* Sección de servicios */}
-      <div className="text-black py-10 bg-gray-100">
+      <div className="text- black py-10 bg-gray-100">
         <div className="container mx-auto px-4 grid grid-cols-5 gap-8">
-          <div className="col-span-3">
+          <div className="col-span-5 sm:col-span-3 md:col-span-5 lg:col-span-2">
             <div className="p-6 rounded-lg shadow-2xl bg-white h-[800px] mb-8">
               <h1 className="text-4xl font-bold mb-4">
                 DESCUBRE NUESTROS SERVICIOS
@@ -96,13 +96,12 @@ const Home = () => {
               <h2 className="text-3xl font-semibold mb-4">
                 Explora nuestras opciones
               </h2>
-              <div className="h-[600px] overflow-y-auto custom-scrollbar">
+              <div className="scrollable-container">
                 <Service />
               </div>
             </div>
 
-            
-            <div className="col-span-3 flex flex-col p-4 bg-white rounded-lg shadow-lg">
+            <div className="col-span-5 sm:col-span-2 md:col-span-2 lg:col-span-2 flex flex-col p-4 bg-white rounded-lg shadow-lg">
               <h1 className="text-4xl font-bold pb-5 text-start">
                 DESCUBRE NUESTROS CORTES
               </h1>
@@ -144,8 +143,8 @@ const Home = () => {
               </div>
             </div>
           </div>
-          <div className="col-span-2">
-            <div className="sticky top-4 p-6 rounded-lg shadow-2xl bg-white">
+          <div className="col-span-5 sm:col-span-3 md:col-span-5 lg:col-span-3">
+            <div className="sticky top-20 p-6 rounded-lg shadow-2xl bg-white">
               <h2 className="text-3xl font-semibold mb-4">Empleados</h2>
               <div className="block font-sans">
                 <div className="flex items-center justify-start mb-2">

@@ -1,21 +1,50 @@
-/* Home.css */
-.custom-scrollbar {
-    scrollbar-width: thin;
-    scrollbar-color: #6b7280 #f3f4f6;
-    /* Color del thumb y track respectivamente */
+.scrollable-container {
+    height: 68%;
+    /* O cualquier otra altura específica */
+    overflow-y: auto;
+    /* Añade scroll si es necesario */
 }
-
-.custom-scrollbar::-webkit-scrollbar {
+/* Barra de desplazamiento completa */
+.scrollable-container::-webkit-scrollbar {
     width: 12px;
+    /* Ancho de la barra de desplazamiento */
 }
 
-.custom-scrollbar::-webkit-scrollbar-track {
-    background: #f3f4f6;
+/* Parte de la barra que se mueve */
+.scrollable-container::-webkit-scrollbar-thumb {
+    background-color: #888;
+    /* Color del "thumb" */
     border-radius: 10px;
+    /* Esquinas redondeadas */
+    transition: background-color 0.3s;
+    /* Transición suave al pasar el ratón */
 }
 
-.custom-scrollbar::-webkit-scrollbar-thumb {
-    background-color: #6b7280;
+.scrollable-container::-webkit-scrollbar-thumb:hover {
+    background-color: #555;
+    /* Color del "thumb" cuando el ratón está sobre él */
+}
+
+/* Parte de la barra donde se mueve el "thumb" */
+.scrollable-container::-webkit-scrollbar-track {
+    background-color: #f1f1f1;
+    /* Color de la pista */
     border-radius: 10px;
-    border: 3px solid #f3f4f6;
+    /* Esquinas redondeadas */
+}
+@media (min-width: 768px) {
+
+    /* Para pantallas medianas (tabletas) */
+    .scrollable-container {
+        height: 33rem;
+        /* 96 en Tailwind equivale a 24rem */
+    }
+}
+
+@media (min-width: 1024px) {
+
+    /* Para pantallas grandes (escritorio) */
+    .scrollable-container {
+        height: 550px;
+    }
 }
