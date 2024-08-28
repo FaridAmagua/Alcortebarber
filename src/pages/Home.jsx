@@ -57,19 +57,22 @@ const Home = () => {
               className="object-cover w-3/4 h-3/4 md:w-5/6 lg:w-full md:h-5/6 lg:h-/6 rounded-lg mt-[70px] sm:mt-0 md:mt-0 lg:mt-0"
             />
           </div>
-          <div className="flex items-center justify-center sm:items-start md:items-center lg:items-center">
-            <div className="text-center md:text-left">
-              <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-4">
+          <div className="flex items-start justify-center sm:items-start md:items-center lg:items-center">
+            <div className="">
+              <h1 className="text-4xl text-center md:text-5xl lg:text-6xl font-bold mb-4">
                 ALCORTEBARBER
               </h1>
-              <p className="text-base md:text-lg lg:text-xl font-sans mb-4 text-black">
+              <p className="text-base text-center md:text-lg lg:text-md font-sans mb-4 text-black">
                 Descubre nuestra amplia gama de servicios de peluquería,
                 incluyendo cortes de pelo, arreglos de barba y asesoramiento
                 personalizado. Visítanos y déjanos cuidar de tu estilo.
               </p>
+              <div className="flex justify-center">
+
               <button className="bg-black text-white py-2 px-4 rounded btn-effect font-semibold border-2 border-black">
                 RESERVA TU CITA
               </button>
+              </div>
             </div>
           </div>
         </div>
