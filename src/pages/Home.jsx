@@ -1,9 +1,11 @@
 /* eslint-disable no-unused-vars */
 import React from "react";
+import {useState} from "react";
 import Service from "../components/Service";
 import Navbar from "../components/Navbar";
-import "./Home.css";
 import Map from "../components/Map";
+import Modal from "../components/Modal";
+import "./Home.css";
 //IMAGENES
 //iconos
 import Imgprofile from "@/assets/icons/account.svg";
@@ -42,8 +44,17 @@ const horarios = [
 ];
 
 const Home = () => {
+    const [isModalOpen, setModalOpen] = useState(false);
+      const handleOpenModal = () => {
+        setModalOpen(true);
+      };
+
+      const handleCloseModal = () => {
+        setModalOpen(false);
+      };
+
   return (
-    <div className="bg-[#FFFFFF] text-black min-h-screen">
+    <div className="bg-[#F3F4F6] text-black min-h-screen">
       {/* Navbar */}
       <Navbar />
 
@@ -68,15 +79,20 @@ const Home = () => {
                 personalizado. Visítanos y déjanos cuidar de tu estilo.
               </p>
               <div className="flex justify-center">
-
-              <button className="bg-black text-white py-2 px-4 rounded btn-effect font-semibold border-2 border-black">
-                RESERVA TU CITA
-              </button>
+                <button
+                  onClick={handleOpenModal}
+                  className="bg-black text-white py-2 px-4 rounded btn-effect font-semibold border-2 border-black"
+                >
+                  RESERVA TU CITA
+                </button>
               </div>
             </div>
           </div>
         </div>
       </div>
+
+      {/* Modal de Selección de Citas */}
+      <Modal isOpen={isModalOpen} onClose={handleCloseModal}></Modal>
 
       {/* Sección de servicios */}
       <div className="text- black py-10 bg-gray-100">

@@ -1,0 +1,19 @@
+.slick-slide>div {
+    width: auto !important;
+    /* Permite que el ancho se ajuste automáticamente */
+}
+
+.slick-slide {
+    margin-right: 5px;
+    /* Controla la separación entre los items */
+}
+
+.slick-prev:before,
+.slick-next:before {
+    color: black;
+}
+
+.slick-track{
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
