@@ -9,7 +9,7 @@ export const Carousel = () => {
     dots: false,
     infinite: false,
     speed: 500,
-    slidesToScroll: 1,
+    slidesToScroll: 4,
     arrows: true, // Asegúrate de tener flechas activadas
     variableWidth: true, // Activa el ancho variable
   };
@@ -30,7 +30,7 @@ export const Carousel = () => {
         {citasDisponibles.map((dia, index) => (
           <div
             key={index}
-            className="bg-gray-100 rounded-lg w-32 p-4 shadow-md text-center"
+            className="bg-white rounded-lg w-32 p-4 shadow-md text-center"
           >
             <p className="m-0 text-lg font-bold text-gray-800">{dia.dia}</p>
             <p className="m-0 text-gray-600">{dia.fecha}</p>
