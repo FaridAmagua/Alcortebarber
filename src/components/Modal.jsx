@@ -1,91 +1,93 @@
 import React, { useState } from "react";
-// eslint-disable-next-line no-unused-vars
 import Carousel from "../components/Carousel";
 
+// Lista de servicios disponibles
+const availableServices = [
+  { id: 1, name: "Corte de pelo", price: 12 },
+  { id: 2, name: "Lavado y secado", price: 8 },
+  { id: 3, name: "Manicura", price: 10 },
+  // Agrega más servicios según sea necesario
+];
+
 const Modal = ({ isOpen, onClose }) => {
-  if (!isOpen) return null; // Si no está abierto, no se muestra nada
+  const [isServiceModalOpen, setIsServiceModalOpen] = useState(false);
+  const [selectedServices, setSelectedServices] = useState([]);
 
-  // Obtener la fecha actual
+  if (!isOpen) return null;
+
   const today = new Date();
-  const [selectedDate, setSelectedDate] = useState(today);
-
-  // Función para formatear la fecha
-  const formatDate = (date) => {
-    const options = { year: "numeric", month: "long", day: "numeric" };
-    return date.toLocaleDateString("es-ES", options);
-  };
-
-  // Obtener el mes y año actual
-  const currentMonth = today
-    .toLocaleString("es-ES", { month: "long" })
-    .toUpperCase();
+  const currentMonth = today.toLocaleString("es-ES", { month: "long" }).toUpperCase();
   const currentYear = today.getFullYear();
 
-  // Manejar el cambio de selección de fecha
-  const handleDateClick = (day) => {
-    const newDate = new Date(today.getFullYear(), today.getMonth(), day);
-    setSelectedDate(newDate);
+  const openServiceModal = () => setIsServiceModalOpen(true);
+  const closeServiceModal = () => setIsServiceModalOpen(false);
+
+  // Manejar la selección de servicios
+  const handleServiceClick = (service) => {
+    setSelectedServices((prevSelected) => {
+      // Si el servicio ya está seleccionado, lo deselecciona
+      if (prevSelected.find((s) => s.id === service.id)) {
+        return prevSelected.filter((s) => s.id !== service.id);
+      } else {
+        // Si no está seleccionado, lo agrega a la lista
+        return [...prevSelected, service];
+      }
+    });
+  };
+
+  // Simular el envío al backend (aquí pondrías tu lógica de petición)
+  const handleConfirmAppointment = () => {
+    const appointmentData = {
+      date: today,  // Cambia a la fecha seleccionada si tienes un selector
+      services: selectedServices,
+    };
+    console.log("Enviando cita al backend:", appointmentData);
+    onClose();
   };
 
   return (
-    <div className="fixed inset-0 flex items-center justify-center z-50 bg-black bg-opacity-50">
-      <div className="font-sans bg-gray-100 p-8 rounded-xl shadow-lg w-5/6 md:w-4/6 lg:w-2/6 h-3/4 flex flex-col">
-        <div className="flex flex-col flex-grow mx-3">
-          {/* MODAL HEADER */}
-          <div className="flex justify-between items-center border-b border-gray-300 py-2">
-            <div className="flex items-center">
-              <h1 className="mb-4 text-3xl font-bold text-gray-800">
-                {`${currentMonth} ${currentYear}`}
-              </h1>
-            </div>
+    <>
+      {/* Modal de Reserva */}
+      <div className="fixed inset-0 flex items-center justify-center z-50 bg-black bg-opacity-50">
+        <div className="bg-gray-100 p-8 rounded-xl shadow-lg w-4/6">
+          <h1>{`${currentMonth} ${currentYear}`}</h1>
+          <p>Selecciona el día de la cita:</p>
+          <Carousel />
 
-            <div
-              onClick={onClose}
-              className="bg-gray-100 text-gray-500 hover:bg-gray-300 cursor-pointer w-8 h-8 flex items-center justify-center rounded-full transition-colors duration-200"
-            >
-              x
-            </div>
-          </div>
-          {/* MODAL HEADER */}
-
-          {/* Contenedor 1 */}
-          <div className="mb-4 rounded">
-            <h2 className="text-xl text-gray-700">
-              Selecciona el día de la cita:
-            </h2>
-            <Carousel />
+          <div onClick={openServiceModal} className="cursor-pointer text-blue-700">
+            + Añadir servicio
           </div>
 
-          {/* Contenedor 2 */}
-          <div className="mb-4 bg-gray-200 p-4 rounded">
-            <div className="flex justify-between items-center">
-              <div className="font-bold text-gray-800">Corte de pelo</div>
-              <div className="text-gray-600">$12</div>
-            </div>
-          </div>
-
-          {/* Contenedor 3: cost/tiempo, ocupa espacio restante */}
-          <div className="mb-4 bg-gray-200 p-4 rounded flex-grow">
-            <div>
-              <span className="font-bold text-gray-800">Coste:</span> $12
-            </div>
-            <div>
-              <span className="font-bold text-gray-800">Tiempo:</span> 1 hora
-            </div>
-          </div>
-        </div>
-
-        {/* Botón que queda alineado al fondo */}
-        <div className="mx-3">
-          <button
-            onClick={onClose}
-            className="bg-blue-700 text-white py-2 rounded-lg w-full hover:bg-blue-800 transition-colors duration-200"
-          >
-            Cerrar
-          </button>
+          <button onClick={handleConfirmAppointment}>Confirmar Cita</button>
         </div>
       </div>
-    </div>
+
+      {/* Modal de Servicios */}
+      {isServiceModalOpen && (
+        <div className="fixed inset-0 flex items-center justify-center z-50 bg-black bg-opacity-50">
+          <div className="bg-gray-100 p-8 rounded-xl shadow-lg w-4/6">
+            <h2>Selecciona un Servicio</h2>
+            <ul>
+              {availableServices.map((service) => (
+                <li key={service.id}>
+                  <button
+                    onClick={() => handleServiceClick(service)}
+                    className={`px-4 py-2 m-1 ${
+                      selectedServices.find((s) => s.id === service.id)
+                        ? "bg-blue-500 text-white"
+                        : "bg-gray-200"
+                    }`}
+                  >
+                    {service.name} - ${service.price}
+                  </button>
+                </li>
+              ))}
+            </ul>
+            <button onClick={closeServiceModal}>Cerrar</button>
+          </div>
+        </div>
+      )}
+    </>
   );
 };
 

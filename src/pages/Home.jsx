@@ -1,300 +1,176 @@
-/* eslint-disable no-unused-vars */
-import React from "react";
-import {useState} from "react";
-import Service from "../components/Service";
-import Navbar from "../components/Navbar";
-import Map from "../components/Map";
-import Modal from "../components/Modal";
-import "./Home.css";
-//IMAGENES
-//iconos
-import Imgprofile from "@/assets/icons/account.svg";
-import Imgmap from "@/assets/icons/map.svg";
-import Imgprincipal from "@/assets/img-3.jpeg";
-  import Imginstagram from "@/assets/icons/insta.svg";
-import Imgwhatsapp from "@/assets/icons/what.svg";
-import Imgcall from "@/assets/icons/call.svg";
-//cortes
-import Imgcorte1 from "@/assets/cortes/1.jpeg";
-import Imgcorte2 from "@/assets/cortes/2.jpeg";
-import Imgcorte3 from "@/assets/cortes/3.jpeg";
-import Imgcorte4 from "@/assets/cortes/4.jpeg";
-import Imgcorte5 from "@/assets/cortes/5.jpeg";
+import React, { useState } from "react";
+import Img1 from "@/assets/imgs/img-1.jpeg";
 
-// Lista de servicios
-const horarios = [
-  {
-    name: "horario",
-    lunes: "Cerrado",
-    martes: "10:30 - 13:30",
-    miercoles: "10:30 - 13:30",
-    jueves: "10:30 - 13:30",
-    viernes: "10:30 - 13:30",
-    sabado: "10:30 - 13:30",
-    domingo: "Cerrado",
-    description: "A stylish haircut to give you a fresh look.",
-    state: true,
-    redesSociales: {
-      instagram: "your_instagram_handle",
-      facebook: "your_facebook_handle",
-      correo: "your_email@example.com",
-    },
-    phoneNumber: "545230123",
-  },
-];
+export const Home = () => {
+  const [isOpen, setIsOpen] = useState(false);
+  const [showAllServices, setShowAllServices] = useState(false);
 
-const Home = () => {
-    const [isModalOpen, setModalOpen] = useState(false);
-      const handleOpenModal = () => {
-        setModalOpen(true);
-      };
+  const toggleSchedule = () => setIsOpen(!isOpen);
+  const toggleServices = () => setShowAllServices(!showAllServices);
 
-      const handleCloseModal = () => {
-        setModalOpen(false);
-      };
+  const popularServices = [
+    "Corte Clásico",
+    "Arreglo de Barba",
+    "Corte Moderno",
+    "Estilismo Personalizado",
+  ];
+
+  const allServices = [
+    "Corte Clásico",
+    "Arreglo de Barba",
+    "Corte Moderno",
+    "Estilismo Personalizado",
+    "Corte Infantil",
+    "Corte a Navaja",
+    "Tinte de Cabello",
+    "Tratamiento Capilar",
+  ];
 
   return (
-    <div className="bg-[#F3F4F6] text-black min-h-screen">
-      {/* Navbar */}
-      <Navbar />
+    <div className="bg-white text-gray-800">
+      {/* Sección Superior */}
+      <header className="flex flex-col md:flex-row w-full items-start justify-between p-8 md:py-20 max-w-screen-xl mx-auto">
+        {/* Parte Izquierda - Imagen */}
+        <div className="w-full md:w-2/3 flex flex-col justify-start items-start space-y-6">
+          <img
+            src={Img1}
+            alt="Descripción de la imagen"
+            className="rounded-lg shadow-lg w-full h-auto"
+          />
+          {/* Contenedor debajo de la imagen */}
+          <div className="bg-gray-100 rounded-lg shadow-lg p-6 text-center md:text-left">
+            <h2 className="text-3xl font-semibold">Bienvenidos a Al Corte Barber</h2>
+            <p>Avenida Lope de Figueroa, 1, 28804, Alcalá de Henares</p>
+            <p className="text-gray-600 mb-6 mt-2">
+              En Al Corte Barber, nos enorgullece ofrecer servicios de barbería de primera calidad
+              con un toque único y moderno. Nuestro objetivo es que cada cliente se sienta especial
+              al salir con un estilo renovado.
+            </p>
 
-      {/* Sección principal */}
-      <div className="container mx-auto px-4 h-screen">
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 h-full">
-          <div className="flex items-center justify-center">
-            <img
-              src={Imgprincipal}
-              alt="Alcorte Barberia"
-              className="object-cover w-3/4 h-3/4 md:w-5/6 lg:w-full md:h-5/6 lg:h-/6 rounded-lg mt-[70px] sm:mt-0 md:mt-0 lg:mt-0"
-            />
-          </div>
-          <div className="flex items-start justify-center sm:items-start md:items-center lg:items-center">
-            <div className="">
-              <h1 className="text-4xl text-center md:text-5xl lg:text-6xl font-bold mb-4">
-                ALCORTEBARBER
-              </h1>
-              <p className="text-base text-center md:text-lg lg:text-md font-sans mb-4 text-black">
-                Descubre nuestra amplia gama de servicios de peluquería,
-                incluyendo cortes de pelo, arreglos de barba y asesoramiento
-                personalizado. Visítanos y déjanos cuidar de tu estilo.
-              </p>
-              <div className="flex justify-center">
-                <button
-                  onClick={handleOpenModal}
-                  className="bg-black text-white py-2 px-4 rounded btn-effect font-semibold border-2 border-black"
+            {/* Sección de Servicios Populares */}
+            <div className="mt-6">
+              <h3 className="text-2xl font-semibold mb-4">Servicios Populares</h3>
+              <ul className="list-none space-y-2">
+                {popularServices.map((service, index) => (
+                  <li key={index} className="text-gray-700 text-lg">
+                    {service}
+                  </li>
+                ))}
+              </ul>
+            </div>
+
+            {/* Subtítulo de Cortes */}
+            <div className="mt-6">
+              <h3 className="text-2xl font-semibold mb-4">Cortes</h3>
+              <button
+                onClick={toggleServices}
+                className="text-blue-600 font-semibold flex items-center"
+              >
+                {showAllServices ? "Ver menos" : "Ver todos los servicios"}
+                <svg
+                  className={`ml-2 w-4 h-4 transform ${showAllServices ? "rotate-180" : "rotate-0"}`}
+                  xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 0 20 20"
+                  fill="currentColor"
                 >
-                  RESERVA TU CITA
-                </button>
-              </div>
+                  <path
+                    fillRule="evenodd"
+                    d="M10 14a1 1 0 01-.707-.293l-4-4a1 1 0 111.414-1.414L10 11.586l3.293-3.293a1 1 0 111.414 1.414l-4 4A1 1 0 0110 14z"
+                    clipRule="evenodd"
+                  />
+                </svg>
+              </button>
+              {showAllServices && (
+                <div className="mt-4">
+                  <ul className="list-disc pl-6 text-gray-700">
+                    {allServices.map((service, index) => (
+                      <li key={index} className="mb-2">
+                        {service}
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              )}
             </div>
           </div>
         </div>
-      </div>
 
-      {/* Modal de Selección de Citas */}
-      <Modal isOpen={isModalOpen} onClose={handleCloseModal}></Modal>
+        {/* Parte Derecha - Card Quienes Somos */}
+        <div className="w-full md:w-1/3 mt-8 md:mt-0 px-4 flex flex-col justify-start">
+          <div className="bg-gray-100 rounded-lg shadow-lg p-6 text-center md:text-left">
+            <h2 className="text-2xl font-semibold mb-4">Quienes Somos</h2>
+            <p className="text-gray-600 mb-6">
+              Somos un salón de barberos especializado en cortes de calidad, brindando un servicio
+              único para cada cliente. Nuestro equipo está formado por expertos que te ayudarán a
+              encontrar el estilo que mejor se adapte a ti.
+            </p>
 
-      {/* Sección de servicios */}
-      <div className="text- black py-10 bg-gray-100">
-        <div className="container mx-auto px-4 grid grid-cols-5 gap-8">
-          <div className="col-span-5 sm:col-span-3 md:col-span-5 lg:col-span-2">
-            <div className="p-6 rounded-lg shadow-2xl bg-white h-[800px] mb-8">
-              <h1 className="text-4xl font-bold mb-4">
-                DESCUBRE NUESTROS SERVICIOS
-              </h1>
-              <div className="mb-4 flex items-center">
-                <p className="text-lg font-sans mb-0">
-                  Avenida Lope de Figueroa, 1, 28804, Alcalá de Henares
-                </p>
-                <span>
-                  <a href="https://www.google.com/maps/dir//alcortebarber/data=!4m6!4m5!1m1!4e2!1m2!1m1!1s0xd42490f6f900849:0x64e26d5bf5fe2002?sa=X&ved=1t:3061&ictx=111">
-                    <img src={Imgmap} className="mr-2" alt="mapa" />
-                  </a>
-                </span>
-              </div>
-              <h2 className="text-3xl font-semibold mb-4">
-                Explora nuestras opciones
-              </h2>
-              <div className="scrollable-container">
-                <Service />
-              </div>
-            </div>
-
-            <div className="col-span-5 sm:col-span-2 md:col-span-2 lg:col-span-2 flex flex-col p-4 bg-white rounded-lg shadow-lg">
-              <h1 className="text-4xl font-bold pb-5 text-start">
-                DESCUBRE NUESTROS CORTES
-              </h1>
-              <p className="text-lg font-sans mb-4 text-black">
-                Descubre nuestra amplia gama de servicios de peluquería,
-                incluyendo cortes de pelo, arreglos de barba y asesoramiento
-                personalizado. Visítanos y déjanos cuidar de tu estilo.
-              </p>
-              <div className="grid grid-cols-2 gap-4">
-                <div className="flex justify-center items-center col-span-1">
-                  <img
-                    src={Imgcorte1}
-                    alt=""
-                    className="h-auto w-full object-cover rounded"
-                  />
-                </div>
-                <div className="grid grid-cols-2 gap-2">
-                  <img
-                    src={Imgcorte2}
-                    alt=""
-                    className="h-auto w-full object-cover rounded"
-                  />
-                  <img
-                    src={Imgcorte3}
-                    alt=""
-                    className="h-auto w-full object-cover rounded"
-                  />
-                  <img
-                    src={Imgcorte4}
-                    alt=""
-                    className="h-auto w-full object-cover rounded"
-                  />
-                  <img
-                    src={Imgcorte5}
-                    alt=""
-                    className="h-auto w-full object-cover rounded"
-                  />
-                </div>
-              </div>
-            </div>
-          </div>
-          <div className="col-span-5 sm:col-span-3 md:col-span-5 lg:col-span-3">
-            <div className="sticky top-20 p-6 rounded-lg shadow-2xl bg-white">
-              <h2 className="text-3xl font-semibold mb-4">Empleados</h2>
-              <div className="block font-sans">
-                <div className="flex items-center justify-start mb-2">
-                  <img src={Imgprofile} alt="profile image" className="mr-2" />
-                  <p className="text-lg">Armando Uceda</p>
-                </div>
-                <div className="flex items-center justify-start mb-2">
-                  <img src={Imgprofile} alt="profile image" className="mr-2" />
-                  <p className="text-lg ">Cristian</p>
-                </div>
-              </div>
-              <div className="block">
-                <h2 className="text-3xl font-semibold mb-2">
-                  Horario de apertura
-                </h2>
-                {horarios.map((horario, index) => (
-                  <div key={index} className="mb-2 font-sans">
-                    <p className="text-lg">Lunes: {horario.lunes}</p>
-                    <p className="text-lg">Martes: {horario.martes}</p>
-                    <p className="text-lg">Miércoles: {horario.miercoles}</p>
-                    <p className="text-lg">Jueves: {horario.jueves}</p>
-                    <p className="text-lg">Viernes: {horario.viernes}</p>
-                    <p className="text-lg">Sábado: {horario.sabado}</p>
-                    <p className="text-lg">Domingo: {horario.domingo}</p>
-                  </div>
-                ))}
-              </div>
-              <div className="block">
-                <h2 className="text-3xl font-semibold mb-2">
-                  Contacta con nosotros
-                </h2>
-                {horarios.map((horario, index) => (
-                  <div key={index} className="mb-2 flex items-center">
-                    <button className="ms-2 py-1 px-3 bg-[#08A0E9] shadow-lg text-black font-semibold rounded-md shadow-md hover:bg-violet-700 focus:outline-none focus:ring focus:ring-violet-400 focus:ring-opacity-75 h-[60px] w-[60px]">
-                      <span className="flex items-center justify-center">
-                        <img src={Imgcall} alt="Alcortebarber" />
-                      </span>
-                    </button>
-                    <button className="ms-2 py-1 px-3 bg-[#7AD06D] shadow-lg text-black font-semibold rounded-md shadow-md hover:bg-violet-700 focus:outline-none focus:ring focus:ring-violet-400 focus:ring-opacity-75 h-[60px] w-[60px]">
-                      <span className="flex items-center justify-center">
-                        <img src={Imgwhatsapp} alt="WhatsApp Alcortebarber" />
-                      </span>
-                    </button>
-                    <button className="ms-2 py-1 px-3 bg-[#FBC031] shadow-lg text-black font-semibold rounded-md shadow-md hover:bg-violet-700 focus:outline-none focus:ring focus:ring-violet-400 focus:ring-opacity-75 h-[60px] w-[60px]">
-                      <span className="flex items-center justify-center">
-                        <img src={Imginstagram} alt="Instagram Alcortebarber" />
-                      </span>
-                    </button>
-                  </div>
-                ))}
-              </div>
-              {/* <div className="block">
-                <h2 className="text-3xl font-semibold mb-2">Redes Sociales</h2>
-                {horarios.map((horario, index) => (
-                  <div key={index} className="mb-2 flex items-center">
-                    <span>
-                      <img src="src/assets/iphone.svg" alt="" />
-                    </span>
-                  </div>
-                ))}
-              </div> */}
-            </div>
-          </div>
-        </div>
-      </div>
-      <div className="bg-black text-white py-8">
-        <div className="container mx-auto px-4">
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {/* Logo y Descripción */}
-            <div>
-              <h2 className="text-2xl font-bold mb-2">ALCORTE BABER</h2>
-              <p className="text-gray-400 font-sans">
-                Somos una peluquería especializada en el cuidado del hombre.
-                Nuestra misión es que te veas y te sientas genial cada vez que
-                nos visitas.
-              </p>
-            </div>
-            {/* Enlaces Rápidos */}
-            <div>
-              <h3 className="text-xl font-semibold mb-2">Enlaces Rápidos</h3>
-              <ul className="text-gray-400">
-                <li className="mb-2">
-                  <a href="#services" className="hover:underline font-sans">
-                    Servicios
-                  </a>
+            {/* Sección de Barberos */}
+            <div className="mt-6">
+              <h3 className="text-xl font-semibold mb-4">Nuestro Equipo de Barberos</h3>
+              <ul className="list-disc pl-6 text-left">
+                <li>
+                  <strong>Juan Pérez</strong> - Especialista en cortes modernos.
                 </li>
-                <li className="mb-2">
-                  <a href="#about" className="hover:underline font-sans">
-                    Sobre Nosotros
-                  </a>
+                <li>
+                  <strong>Laura García</strong> - Experta en estilos clásicos y barba.
                 </li>
-                <li className="mb-2">
-                  <a href="#contact" className="hover:underline font-sans">
-                    Contacto
-                  </a>
+                <li>
+                  <strong>Carlos Sánchez</strong> - Técnico en cortes de precisión.
+                </li>
+                <li>
+                  <strong>María López</strong> - Profesional en cortes de niños y caballeros.
                 </li>
               </ul>
             </div>
-            {/* Información de Contacto */}
-            <div>
-              <h3 className="text-xl font-semibold mb-2">Contacto</h3>
-              <p className="text-gray-400 font-sans">
-                Email: contacto@pulseproject.com
-              </p>
-              <p className="text-gray-400 font-sans">
-                Teléfono: +34 123 456 789
-              </p>
-              <div className="flex space-x-4 mt-4">
-                <a
-                  href="#facebook"
-                  className="text-gray-400 hover:text-white"
-                ></a>
-                <a href="#twitter" className="text-gray-400 hover:text-white">
-                  {/* <img src "src/assets/twitter.svg" alt="Twitter" className="w-6 h-6" /> */}
-                </a>
-                <a
-                  href="#instagram"
-                  className="text-gray-400 hover:text-white"
-                ></a>
-              </div>
+
+            {/* Sección de Horario de Apertura */}
+            <div className="mt-6">
+              <h3 className="text-xl font-semibold mb-2">Horario de Apertura</h3>
+              <p className="text-lg text-gray-600">Hoy: 10:00 - 20:00</p>
+              <button
+                className="mt-2 text-blue-600 hover:text-blue-800 flex items-center justify-center md:justify-start"
+                onClick={toggleSchedule}
+              >
+                Mostrar semana completa
+                <svg
+                  className={`ml-2 w-4 h-4 transform ${isOpen ? "rotate-180" : "rotate-0"}`}
+                  xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 0 20 20"
+                  fill="currentColor"
+                >
+                  <path
+                    fillRule="evenodd"
+                    d="M10 14a1 1 0 01-.707-.293l-4-4a1 1 0 111.414-1.414L10 11.586l3.293-3.293a1 1 0 111.414 1.414l-4 4A1 1 0 0110 14z"
+                    clipRule="evenodd"
+                  />
+                </svg>
+              </button>
+
+              {isOpen && (
+                <div className="mt-4 text-gray-600">
+                  <p>Lunes: 10:00 - 20:00</p>
+                  <p>Martes: 10:00 - 20:00</p>
+                  <p>Miércoles: 10:00 - 20:00</p>
+                  <p>Jueves: 10:00 - 20:00</p>
+                  <p>Viernes: 10:00 - 20:00</p>
+                  <p>Sábado: 10:00 - 18:00</p>
+                  <p>Domingo: Cerrado</p>
+                </div>
+              )}
             </div>
           </div>
-          <div className="mt-8 text-center text-gray-400 font-serif">
-            &copy; {new Date().getFullYear()} Pulse Project. Todos los derechos
-            reservados.
-          </div>
         </div>
-      </div>
+      </header>
+
+      {/* Footer */}
+      <footer className="bg-gray-800 text-white py-8">
+        <div className="max-w-screen-xl mx-auto px-4 text-center">
+          <p>&copy; 2024 Al Corte Barber. Todos los derechos reservados.</p>
+        </div>
+      </footer>
     </div>
   );
 };
 
 export default Home;
-

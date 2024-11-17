@@ -16,3 +16,7 @@ body{
 /* .active{
   @apply border-b-2 border-[#fff] no-underline text-[#fff] transition-all duration-300 ease-in-out;
 } */
+
+.page-container {
+  margin-top: 5rem; /* Ajusta esto según la altura real de tu Navbar */
+}

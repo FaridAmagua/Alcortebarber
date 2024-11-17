@@ -1,4 +1,17 @@
-.navbar {
-    border-bottom: 2px solid #ffffff; /* Cambia el color y grosor del borde según tus preferencias */
-  }
-  
+/* Ajustes del menú móvil cuando está visible */
+.menu-open {
+  left: 0;
+  transition: all 0.5s ease-in-out;
+}
+
+/* Ajustes del menú móvil cuando está oculto */
+.menu-closed {
+  left: -100vw;
+  transition: all 0.5s ease-in-out;
+}
+
+/* Ajustes opcionales para el fondo */
+.menu-background {
+  backdrop-filter: blur(8px);
+  background-color: rgba(39, 39, 39, 0.8);
+}
