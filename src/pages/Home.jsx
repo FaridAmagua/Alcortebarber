@@ -155,8 +155,8 @@ export const Home = () => {
           </div>
         </div>
 
-        {/* Parte Derecha */}
-        <div className="w-full md:w-1/3 mt-8 md:mt-0 px-4 flex flex-col justify-start">
+            {/* Parte Derecha */}
+            <div className="w-full md:w-1/3 mt-8 md:mt-0 px-4 flex flex-col justify-start">
           <div className="bg-gray-100 rounded-lg shadow-lg p-6 text-center md:text-left">
             <h2 className="text-2xl font-semibold mb-4">Quienes Somos</h2>
             <p className="text-gray-600 mb-6">
@@ -167,10 +167,10 @@ export const Home = () => {
             </p>
 
             {/* Barberos */}
-           <div>
-            <TeamCarousel></TeamCarousel>
-           </div>
-            
+            <div>
+              <TeamCarousel></TeamCarousel>
+            </div>
+
             {/* Horario */}
             <div className="mt-6">
               <h3 className="text-xl font-semibold mb-2">Horario</h3>
@@ -189,8 +189,57 @@ export const Home = () => {
                 </div>
               )}
             </div>
+
+            {/* Redes Sociales */}
+            <div className="mt-6">
+              <h3 className="text-xl font-semibold mb-4">Redes Sociales</h3>
+              <div className="flex space-x-4 justify-center md:justify-start">
+                {/* Icono de Facebook */}
+                <a
+                  href="https://facebook.com/al-corte-barber"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="hover:scale-110 transition-transform"
+                >
+                  <img
+                    src="/icons/facebook.svg"
+                    alt="Facebook"
+                    className="w-6 h-6"
+                  />
+                </a>
+
+                {/* Icono de Instagram */}
+                <a
+                  href="https://instagram.com/al-corte-barber"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="hover:scale-110 transition-transform"
+                >
+                  <img
+                    src="/icons/instagram.svg"
+                    alt="Instagram"
+                    className="w-6 h-6"
+                  />
+                </a>
+
+                {/* Icono de Twitter */}
+                <a
+                  href="https://twitter.com/al-corte-barber"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="hover:scale-110 transition-transform"
+                >
+                  <img
+                    src="/icons/twitter.svg"
+                    alt="Twitter"
+                    className="w-6 h-6"
+                  />
+                </a>
+              </div>
+            </div>
           </div>
         </div>
+
       </header>
 
       <footer className="bg-gray-800 text-white py-8">

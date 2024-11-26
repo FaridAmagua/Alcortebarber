@@ -5,6 +5,7 @@ import Navbar from "./components/Navbar";
 import Help from "./pages/Help"
 import Login from "./pages/Login"
 import NotFound from "./pages/Notfound"
+import Register from "./pages/Register";
 
 function App() {
   return (
@@ -16,6 +17,7 @@ function App() {
         <Routes>        
           <Route path="/" element={<Home />} />
           <Route path="/Help" element={<Help />} />
+          <Route path="/Register" element={<Register />} />
           <Route path="/Login" element={<Login />} />
           <Route path="*" element={<NotFound />} /> {/* Ruta para 404 */}
 
