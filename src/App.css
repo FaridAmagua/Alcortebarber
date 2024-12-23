@@ -6,7 +6,7 @@
   background-color: rgb(248 250 252);
 }
 body{
-  @apply bg-black;
+  @apply bg-red-700;
   padding: 0;
   margin: 0;
   box-sizing: border-box;
@@ -18,5 +18,6 @@ body{
 } */
 
 .page-container {
-  margin-top: 5rem; /* Ajusta esto según la altura real de tu Navbar */
+
+  padding-top: 1rem; /* Ajusta esto según la altura real de tu Navbar */
 }
